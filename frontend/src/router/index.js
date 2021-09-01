@@ -12,11 +12,6 @@ const routes = [
     name: "Signup",
     component: () => import("../views/Signup.vue"),
   },
-  // {
-  //   path: "/new",
-  //   name: "TRYCASE",
-  //   component: () => import("../views/new.vue"),
-  // },
   {
     path: "/game",
     name: "Game",
