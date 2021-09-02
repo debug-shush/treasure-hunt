@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="filling.css" />
+
+
+<script type="application/javascript" src="fastclick.js"></script>
+<script type="text/javascript" src="filling.js"></script>
+
+<script type="text/javascript">
+if ('addEventListener' in document) {
+    document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body);
+    }, false);
+}
+</script>
+<script src="jquery.js"></script>
+<title>Filling Solver and Generator</title>
+</head>
+<body>
+
+<div id="banner">
+Filling Solver and Generator
+</div>
+<div id="tabContainer">
+<ul id="tabs">
+<li class="active"><a href="#tab1">Generator</a></li>
+<li><a href="#tab2">Solver</a></li>
+<li><a href="#tab3">FAQ</a></li>
+<li><a href="#tab4">About</a></li>
+</ul>
+</div>
+<div id="tabsContent">
+<div id="tab1" class="tab_content">
+<div id="progressDiv">
+<progress id="genProgress" value="0" max="100"></progress>
+</div>
+Width: <input type="text" id="genWidthField" value="10" size="2"/>
+Height: <input type="text" id="genHeightField" value="10" size="2"/><br />
+Difficulty:
+Easy<input type="radio" id="easy" name="difficulty" value="easy">
+Medium<input type="radio" id="medium" name="difficulty" value="medium" checked="checked">
+Hard<input type="radio" id="hard" name="difficulty" value="hard">
+<br />
+<input type="hidden" id="generatedPuzzle" size="100"/>
+<input type="button" value="Generate" id="generateButton" class="button medium"/>
+<input type="button" value="Stop Generation" id="stopGenerationButton" class="button medium"/>
+
+
+
+
+<div id="codeDiv">
+Or enter puzzle code:
+<input type="text" id="userPuzzle" size="40"/>
+<input type="button" value="Display Puzzle" id="displayButton" class="button small"/>
+</div>
+</div>
+<div id="tab2" class="tab_content">
+<div id="solveProgressDiv">
+<progress id="solveProgress" value="0" max="100"></progress>
+</div>
+Enter grid size:
+Width: <input type="text" id="solveWidthField" value="10" size="2"/>
+Height: <input type="text" id="solveHeightField" value="10" size="2"/>
+<input type="button" value="Display Grid" id="displayGridButton" class="button small"/><br />
+<div id="solveCodeDiv">
+Or enter puzzle code:
+<input type="text" id="userSolvePuzzle" size="40"/>
+</div>
+<input type="button" value="Solve Puzzle" id="solveButton" class="button medium"/>
+<input type="button" value="Stop Solve" id="stopSolvingButton" class="button medium"/>
+</div>
+<div id="tab3" class="tab_content">
+This thing isn't very good?<br />
+You're right! It's very much in beta. Check back later for improvements.<br /><br />
+How do I input a puzzle?<br />
+Input your grid size, and hit the "Display Grid" button. After that, click on the cells and type in the numbers. Once you think
+you've got it right, hit the "Solve" button.<br />
+You can also input a "puzzle string", which is something like "3x3:2a3a3a2aa"<br /><br />
+How do I input numbers larger than 9?<br />
+You don't. Maybe in the future!<br /><br />
+</div>
+<div id="tab4" class="tab_content">
+The filling program is written entirely in javascript, no plugins needed!
+</div>
+</div>
+<br />
+<div id="puzzleInterface">
+<div id="canvasDiv">
+
+<canvas id="puzzleCanvas" class="fastclick"></canvas>
+
+</div>    
+<br />
+<script type='text/javascript'>
+var canvas = document.querySelector(".fastclick");
+new FastClick(canvas);
+</script>
+<br />
+<div id="buttonsDiv">
+
+<input class="button small" type="button" value="Undo" id="undoButton"/>
+<input class="button small" type="button" value="Clear" id="clearButton"/>
+<input class="button small" type="button" value="Save" id="saveButton"/>
+<input class="button small" type="button" value="Load" id="loadButton"/>
+</div>
+</div>
+<br />
+</body>
+</html>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		init();
+	});
+</script>
