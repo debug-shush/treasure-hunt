@@ -96,9 +96,10 @@ function init() {
 	$("#tab1").show();
 
 	$("#displayButton").click(function() {
-		$("#generatedPuzzle").val("");
-		$("#userSolvePuzzle").val("");
-		puzzle = $("#userPuzzle").val()
+		// $("#generatedPuzzle").val("");
+		// $("#userSolvePuzzle").val("");
+		// puzzle = $("#userPuzzle").val()
+		puzzle = "13x9:aaa1aaa4a31a2a42a23aaaaa17aa3aaaa2a2aaaa21a52aaa2aa6aaa631a2a41a6a4aaaa3a5aa4aa35aaaa5a9a1aa3aa5aa2aaa9a1aaa64a21aaaa"
 		displayPuzzle(puzzle);
 	});
 	if(isMobile == false){
@@ -1397,9 +1398,12 @@ function generate(button){
 	progressBar.attr("value", 0);
 	progressBar.attr("max", 100);
 	var tempId = $("#idField").val();
-	var difficulty = $("input[name=difficulty]:checked").val();
-	var userWidth = $("#genWidthField").val();
-	var userHeight = $("#genHeightField").val();
+	// var difficulty = $("input[name=difficulty]:checked").val();
+	var difficulty = "hard";
+	// var userWidth = $("#genWidthField").val();
+	var userWidth = 13;
+	// var userHeight = $("#genHeightField").val();
+	var userHeight = 9;
 	progressBar.css("display", "block");
 	
 	$("#generateButton").css("display", "none");
@@ -1412,6 +1416,7 @@ function generate(button){
 	worker = new Worker("solverGenerator.js");
 	worker.onmessage = function (event) {
 		var data = event.data;
+		console.log(data);
 		if(data.indexOf("done") != -1){
 			
 			temp = data.split("_");
